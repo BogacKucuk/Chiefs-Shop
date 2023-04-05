@@ -3,6 +3,8 @@ import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import "./sign-up-form.styles.scss";
+
+
 const defaultFormFields = {
   displayName: '',
   email: '',
@@ -23,7 +25,8 @@ const SignUpForm = () => {
     }
     try {
       const { user } = await createAuthUserWithEmailAndPassword(email, password);
-      await createUserDocumentFromAuth(user, { displayName }); // db de user için document kaydı oluştur
+      // NOTE - db de user için document kaydı oluştur
+      await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     }
     catch (error) {
